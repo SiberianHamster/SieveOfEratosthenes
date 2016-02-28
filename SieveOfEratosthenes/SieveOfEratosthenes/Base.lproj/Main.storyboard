@@ -38,6 +38,9 @@
                                 <rect key="frame" x="150.5" y="285" width="300" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                <connections>
+                                    <action selector="textFieldDidStartEdit:" destination="BYZ-38-t0r" eventType="editingChanged" id="sdF-2X-2gH"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJK-3Y-sRW">
                                 <rect key="frame" x="217.5" y="323" width="165" height="30"/>
