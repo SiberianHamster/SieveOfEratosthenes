@@ -12,8 +12,18 @@ class MainViewController: UIViewController {
 
   @IBOutlet weak var textField: UITextField!
   
+  
+  //Achtung need a regex here to prevent pasting
   @IBAction func startButton(sender: UIButton) {
     
+    let userValue = NSInteger(Int(textField.text!)!)
+    var userCollection = [Bool]()
+    for(var x=0;x < userValue; x++){
+      let temp = true
+      userCollection.append(temp)
+    }
+    let numbers = Primes.init(userUpperLimit: userValue, userCollection: userCollection)
+    print(numbers.primeCollection.count)
   }
   
   @IBOutlet weak var startButtonOutlet: UIButton!
@@ -22,8 +32,10 @@ class MainViewController: UIViewController {
     
     if (checkTextForNumber() == true){
       print("True is good")
+      self.startButtonOutlet.enabled = true
     }else{
       print("False is bad")
+      self.startButtonOutlet.enabled = false
     }
     
   }
