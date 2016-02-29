@@ -70,7 +70,7 @@ class MainViewController: UIViewController {
       
      let destinationVC = segue.destinationViewController as! ResultViewController
       let userMax = NSInteger(Int(self.textField.text!)!)
-      print("Object Count: \(textField.text)")
+//      print("Object Count: \(textField.text)")
       destinationVC.usersMax = userMax
 
     }

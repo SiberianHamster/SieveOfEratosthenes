@@ -10,19 +10,31 @@ import UIKit
 
 class ResultViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
   
-  var usersMax:NSInteger=NSInteger()
-  var objectToPrimeify:Primes=Primes()
+  var usersMax:NSInteger = NSInteger()
+  var objectToPrimeify:Primes = Primes()
 
+  @IBOutlet weak var detectPrimeOutlet: UIButton!
+  
   @IBAction func detectPrimeButton(sender: UIButton) {
-    let aNumber = self.objectToPrimeify.primeCollection.count + self.objectToPrimeify.adjustIndexForFirstPrime
-    if(NSInteger(Int(sqrt(Double(aNumber)))) < usersMax){
-    let returnValue = self.objectToPrimeify.runPrimeSweep(self.objectToPrimeify.primeCollection, currentSmallest: self.objectToPrimeify.currentSmallestPrime)
-    self.objectToPrimeify.primeCollection = returnValue
-    }
+
+//    //cut loop in half by not running the sweep on numbers greater than square root of maximum. if it is 2 then we move to next number
+////    if(self.objectToPrimeify.currentSmallestPrime < NSInteger(NSInteger(sqrt(Double(self.objectToPrimeify.primeUpperLimit + 1))))){
+//    let returnValue = self.objectToPrimeify.runPrimeSweep(self.objectToPrimeify.primeCollection, currentSmallest: self.objectToPrimeify.currentSmallestPrime)
+//    self.objectToPrimeify.primeCollection = returnValue
+////    }
+//    
+//    
+//    self.objectToPrimeify.getNewSmallestPrime()
+    self.objectToPrimeify.primeCollection = self.objectToPrimeify.runPrimeSweep(self.objectToPrimeify.primeCollection, currentSmallestActualNumber: self.objectToPrimeify.currentSmallestPrime)
+    
+    self.objectToPrimeify.getNewSmallestPrime()
+    
+    self.detectPrimeOutlet.setTitle("Sweep for \(self.objectToPrimeify.currentSmallestPrime)", forState: UIControlState.Normal)
     
     self.tableView.reloadData()
-    
+
   }
+  
   @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,20 +44,16 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
         let temp = true
         userCollection.append(temp)
       }
-      
+
         self.objectToPrimeify = Primes.init(userUpperLimit: usersMax, userCollection: userCollection)
       self.tableView.delegate = self
       self.tableView.dataSource = self
         // Do any additional setup after loading the view.
+          self.detectPrimeOutlet.setTitle("Sweep for \(self.objectToPrimeify.currentSmallestPrime)", forState: UIControlState.Normal)
     }
-  
-  override func viewDidAppear(animated: Bool) {
-  }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
+
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return self.objectToPrimeify.primeCollection.count
@@ -54,29 +62,20 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = self.tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ResultTableViewCell
     let currentCellNumber = self.objectToPrimeify.primeCollection[indexPath.row]
-    let currentNumber = indexPath.row + self.objectToPrimeify.adjustIndexForFirstPrime
-    cell.numberLabel.text = String(currentNumber)
+    let actualNumber = self.objectToPrimeify.getAcutalNumberForIndexRow(indexPath.row)
+    cell.numberLabel.text = String(actualNumber)
     if(currentCellNumber.boolValue == false){
       cell.statusLabel.text = "Not Prime"
-    }else if(currentNumber < self.objectToPrimeify.currentSmallestPrime){
+    }else
+  if(actualNumber <= self.objectToPrimeify.lastSmallestPrime){
       cell.statusLabel.text = "Prime"
-    }else{
+    }else
+  {
       cell.statusLabel.text = "Not Evaluated"
     }
     return cell
   }
   
   
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

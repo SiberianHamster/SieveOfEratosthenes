@@ -150,6 +150,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="detectPrimeOutlet" destination="Muo-4x-1is" id="cbx-sm-332"/>
                         <outlet property="tableView" destination="JKm-Vm-zjm" id="aS6-ha-C3h"/>
                     </connections>
                 </viewController>
