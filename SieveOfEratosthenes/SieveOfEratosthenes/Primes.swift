@@ -15,13 +15,25 @@ class Primes: NSObject {
   var currentSmallestPrime:NSInteger = 2
   let adjustIndexForFirstPrime:NSInteger = 2
   
+  override init() {
+  }
+  
   init(userUpperLimit:NSInteger, userCollection:[Bool]){
     self.primeUpperLimit = userUpperLimit
     self.primeCollection = userCollection
   }
   
-  func runPrimeSweep(){
-      print("Sweep")
+  func runPrimeSweep(var collectionOfNumbers:[Bool],currentSmallest:NSInteger)->[Bool]{
+    
+    var x = currentSmallest+1
+    repeat{
+    if (x % currentSmallest == 0){
+      collectionOfNumbers[x] = false
+      }
+      x++
+    }while x < collectionOfNumbers.count
+
+    return collectionOfNumbers
   }
   
   func getNewSmallestPrime()->NSInteger{

@@ -10,20 +10,13 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-  @IBOutlet weak var textField: UITextField!
+  let someLargeNumberToWarnUser = 100000
   
+  @IBOutlet weak var textField: UITextField!
   
   //Achtung need a regex here to prevent pasting
   @IBAction func startButton(sender: UIButton) {
-    
-    let userValue = NSInteger(Int(textField.text!)!)
-    var userCollection = [Bool]()
-    for(var x=0;x < userValue; x++){
-      let temp = true
-      userCollection.append(temp)
-    }
-    let numbers = Primes.init(userUpperLimit: userValue, userCollection: userCollection)
-    print(numbers.primeCollection.count)
+
   }
   
   @IBOutlet weak var startButtonOutlet: UIButton!
@@ -31,10 +24,8 @@ class MainViewController: UIViewController {
   @IBAction func textFieldDidStartEdit(sender: UITextField) {
     
     if (checkTextForNumber() == true){
-      print("True is good")
       self.startButtonOutlet.enabled = true
     }else{
-      print("False is bad")
       self.startButtonOutlet.enabled = false
     }
     
@@ -42,7 +33,6 @@ class MainViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
   
@@ -62,25 +52,28 @@ class MainViewController: UIViewController {
     if let text = self.textField.text where !text.isEmpty
     {
       if (Int(text) > 1){
+        self.startButtonOutlet.setTitle("Lets Do It!", forState: UIControlState.Normal)
         isValid = true
-        return isValid
-      }
-      
+        if(Int(text)>someLargeNumberToWarnUser){
+        self.startButtonOutlet.setTitle("You might have to wait a while!", forState: UIControlState.Normal)
+        }
+      }else{
+      self.startButtonOutlet.setTitle("Please enter a number larger than 1", forState: UIControlState.Normal)
       isValid = false
-      return isValid
     }
+  }
     return isValid
   }
-    
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if (segue.identifier == "showResultsSegue"){
+      
+     let destinationVC = segue.destinationViewController as! ResultViewController
+      let userMax = NSInteger(Int(self.textField.text!)!)
+      print("Object Count: \(textField.text)")
+      destinationVC.usersMax = userMax
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
+  }
 
 }

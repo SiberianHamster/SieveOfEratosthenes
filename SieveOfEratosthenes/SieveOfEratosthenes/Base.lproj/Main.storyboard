@@ -19,34 +19,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sieve of Eratosthenes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Go3-v0-xpt">
-                                <rect key="frame" x="179.5" y="93" width="241" height="30"/>
+                                <rect key="frame" x="179" y="93" width="241" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="241" id="GgG-T3-Moc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLv-vY-bOD">
-                                <rect key="frame" x="191.5" y="131" width="217" height="122"/>
+                                <rect key="frame" x="191" y="131" width="217" height="122"/>
                                 <string key="text">The sieve of Eratosthenes is one of the most efficient ways to find all of the smaller primes. - Wiki did it again(en.wikipedia.org/wiki/Sieve_of_Eratosthenes)</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Non-Negative Interger Greater than 1" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6GT-hJ-sGV">
-                                <rect key="frame" x="150.5" y="285" width="300" height="30"/>
+                                <rect key="frame" x="150" y="285" width="300" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                 <connections>
                                     <action selector="textFieldDidStartEdit:" destination="BYZ-38-t0r" eventType="editingChanged" id="sdF-2X-2gH"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJK-3Y-sRW">
-                                <rect key="frame" x="217.5" y="323" width="165" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJK-3Y-sRW">
+                                <rect key="frame" x="229" y="323" width="142" height="30"/>
                                 <state key="normal" title="Enter a Number First"/>
                                 <connections>
                                     <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PbR-XM-fQk"/>
+                                    <segue destination="T0X-G3-yD5" kind="presentation" identifier="showResultsSegue" id="oIS-uU-r3D"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -71,6 +72,90 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Result View Controller-->
+        <scene sceneID="BUD-mH-VKx">
+            <objects>
+                <viewController storyboardIdentifier="ResultVC" id="T0X-G3-yD5" customClass="ResultViewController" customModule="SieveOfEratosthenes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Y84-ZV-JP5"/>
+                        <viewControllerLayoutGuide type="bottom" id="iLg-1H-rc2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M9v-ZF-5wD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your List of Numbers:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y1y-ju-ssb">
+                                <rect key="frame" x="217" y="20" width="165.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Muo-4x-1is">
+                                <rect key="frame" x="255" y="562" width="90" height="30"/>
+                                <state key="normal" title="Detect Prime"/>
+                                <connections>
+                                    <action selector="detectPrimeButton:" destination="T0X-G3-yD5" eventType="touchUpInside" id="Vyh-pK-1cG"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JKm-Vm-zjm">
+                                <rect key="frame" x="8" y="48" width="584" height="506"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="peo-cT-3Tn" customClass="ResultTableViewCell" customModule="SieveOfEratosthenes" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="584" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="peo-cT-3Tn" id="xyk-OO-xuu">
+                                            <rect key="frame" x="0.0" y="0.0" width="584" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Not Evaluated" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0v-U1-cUv">
+                                                    <rect key="frame" x="469" y="11" width="107" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btF-xb-fur">
+                                                    <rect key="frame" x="271" y="11" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Y0v-U1-cUv" firstAttribute="centerY" secondItem="xyk-OO-xuu" secondAttribute="centerY" id="2FA-6F-0mb"/>
+                                                <constraint firstItem="btF-xb-fur" firstAttribute="centerY" secondItem="xyk-OO-xuu" secondAttribute="centerY" id="9ty-6T-Wul"/>
+                                                <constraint firstItem="btF-xb-fur" firstAttribute="centerX" secondItem="xyk-OO-xuu" secondAttribute="centerX" id="Pmu-ua-woU"/>
+                                                <constraint firstAttribute="trailing" secondItem="Y0v-U1-cUv" secondAttribute="trailing" constant="8" id="o93-64-zEk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="numberLabel" destination="btF-xb-fur" id="Idl-o3-31E"/>
+                                            <outlet property="statusLabel" destination="Y0v-U1-cUv" id="wh2-Cc-e9C"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="JKm-Vm-zjm" secondAttribute="trailing" constant="8" id="1Sz-wq-2db"/>
+                            <constraint firstItem="y1y-ju-ssb" firstAttribute="top" secondItem="Y84-ZV-JP5" secondAttribute="bottom" id="3Z6-8t-XZc"/>
+                            <constraint firstItem="JKm-Vm-zjm" firstAttribute="leading" secondItem="M9v-ZF-5wD" secondAttribute="leading" constant="8" id="8Mj-Qe-Jdm"/>
+                            <constraint firstItem="Muo-4x-1is" firstAttribute="top" secondItem="JKm-Vm-zjm" secondAttribute="bottom" constant="8" id="Ies-yf-XBg"/>
+                            <constraint firstItem="JKm-Vm-zjm" firstAttribute="top" secondItem="y1y-ju-ssb" secondAttribute="bottom" constant="8" id="LFq-Gq-D0N"/>
+                            <constraint firstItem="Muo-4x-1is" firstAttribute="centerX" secondItem="M9v-ZF-5wD" secondAttribute="centerX" id="Qil-F0-rap"/>
+                            <constraint firstItem="iLg-1H-rc2" firstAttribute="top" secondItem="Muo-4x-1is" secondAttribute="bottom" constant="8" id="hkO-Cx-KVt"/>
+                            <constraint firstItem="y1y-ju-ssb" firstAttribute="centerX" secondItem="M9v-ZF-5wD" secondAttribute="centerX" id="hol-om-yqo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="JKm-Vm-zjm" id="aS6-ha-C3h"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gqm-nP-AgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="954" y="185"/>
         </scene>
     </scenes>
 </document>
