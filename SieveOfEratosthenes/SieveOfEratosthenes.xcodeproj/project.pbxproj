@@ -13,6 +13,9 @@
 		AE0C0E751C80D3EE00F3EE0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE0C0E731C80D3EE00F3EE0B /* LaunchScreen.storyboard */; };
 		AE0C0E7D1C80DB6300F3EE0B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C0E7C1C80DB6300F3EE0B /* MainViewController.swift */; };
 		AE0C0E831C80ED8300F3EE0B /* Primes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE0C0E821C80ED8300F3EE0B /* Primes.swift */; };
+		AE4446681C8512C0009225BC /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4446671C8512C0009225BC /* constants.swift */; };
+		AE5011141C83A29600AE7AB5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5011131C83A29600AE7AB5 /* ResultViewController.swift */; };
+		AEB7EB261C83B7F0000F465E /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB7EB251C83B7F0000F465E /* ResultTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		AE0C0E761C80D3EE00F3EE0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE0C0E7C1C80DB6300F3EE0B /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AE0C0E821C80ED8300F3EE0B /* Primes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Primes.swift; sourceTree = "<group>"; };
+		AE4446671C8512C0009225BC /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
+		AE5011131C83A29600AE7AB5 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		AEB7EB251C83B7F0000F465E /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,8 @@
 			isa = PBXGroup;
 			children = (
 				AE0C0E7C1C80DB6300F3EE0B /* MainViewController.swift */,
+				AE5011131C83A29600AE7AB5 /* ResultViewController.swift */,
+				AEB7EB251C83B7F0000F465E /* ResultTableViewCell.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -95,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				AE0C0E821C80ED8300F3EE0B /* Primes.swift */,
+				AE4446671C8512C0009225BC /* constants.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -173,6 +182,9 @@
 				AE0C0E7D1C80DB6300F3EE0B /* MainViewController.swift in Sources */,
 				AE0C0E831C80ED8300F3EE0B /* Primes.swift in Sources */,
 				AE0C0E6B1C80D3EE00F3EE0B /* AppDelegate.swift in Sources */,
+				AEB7EB261C83B7F0000F465E /* ResultTableViewCell.swift in Sources */,
+				AE5011141C83A29600AE7AB5 /* ResultViewController.swift in Sources */,
+				AE4446681C8512C0009225BC /* constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +301,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marklinapp.SieveOfEratosthenes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -300,6 +313,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marklinapp.SieveOfEratosthenes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -322,6 +336,7 @@
 				AE0C0E7B1C80D3EE00F3EE0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
