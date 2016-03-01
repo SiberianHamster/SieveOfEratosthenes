@@ -50,8 +50,9 @@ class Primes: NSObject {
     }
     x++
     }
-      while (x<self.primeUpperLimit)
-    }}
+      while (x<self.primeUpperLimit-1)
+    }
+  }
   
   func getAcutalNumberForIndexRow(row:NSInteger)->NSInteger{
     let actualNumber = row + self.adjustIndexForFirstPrime

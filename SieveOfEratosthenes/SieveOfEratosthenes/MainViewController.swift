@@ -10,7 +10,9 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-  let someLargeNumberToWarnUser = 100000
+  @IBOutlet weak var titleLabel: UILabel!
+ 
+  @IBOutlet weak var descriptionLabel: UILabel!
   
   @IBOutlet weak var textField: UITextField!
   
@@ -33,12 +35,28 @@ class MainViewController: UIViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+      self.titleLabel.textColor = constants.kThemeComplimentaryColor
+      self.descriptionLabel.textColor = constants.kThemeComplimentaryColor
+      self.view.backgroundColor = constants.kBackground
+      self.textField.backgroundColor = constants.kThemeMainColor
+      self.textField.textColor = constants.kThemeComplimentary2Color
+      self.startButtonOutlet.setTitleColor(constants.kThemeDisabledColor, forState: UIControlState.Disabled)
+      self.startButtonOutlet.setTitleColor(constants.kThemeComplimentary2Color, forState: UIControlState.Normal)
+      
         // Do any additional setup after loading the view.
+      
+//      let grLayer = CAGradientLayer.init()
+//      grLayer.frame = cell.layer.frame
+//      let colors = [UIColor.blackColor() as AnyObject?, UIColor.greenColor() as AnyObject?]
+//      grLayer.colors = colors
+//      cell.layer.insertSublayer(grLayer, atIndex: 0)
     }
   
   override func viewWillAppear(animated: Bool) {
     super.viewWillAppear(true)
+    self.textField.text = nil
     self.startButtonOutlet.enabled = false
+    checkTextForNumber()
   }
 
     override func didReceiveMemoryWarning() {
@@ -54,14 +72,17 @@ class MainViewController: UIViewController {
       if (Int(text) > 1){
         self.startButtonOutlet.setTitle("Lets Do It!", forState: UIControlState.Normal)
         isValid = true
-        if(Int(text)>someLargeNumberToWarnUser){
-        self.startButtonOutlet.setTitle("You might have to wait a while!", forState: UIControlState.Normal)
+        if(Int(text)>constants.someLargeNumberToWarnUser){
+        self.startButtonOutlet.setTitle("Redonkulous! You can but there will be a wait time", forState: UIControlState.Normal)
         }
       }else{
       self.startButtonOutlet.setTitle("Please enter a number larger than 1", forState: UIControlState.Normal)
       isValid = false
     }
-  }
+      
+    }else {
+      self.startButtonOutlet.setTitle("Enter a Number", forState: UIControlState.Normal)
+    }
     return isValid
   }
   
