@@ -103,6 +103,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Muo-4x-1is">
                                 <rect key="frame" x="255" y="562" width="90" height="30"/>
                                 <state key="normal" title="Detect Prime"/>
+                                <variation key="widthClass=compact">
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                </variation>
                                 <connections>
                                     <action selector="detectPrimeButton:" destination="T0X-G3-yD5" eventType="touchUpInside" id="Vyh-pK-1cG"/>
                                 </connections>
@@ -148,6 +151,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDq-3H-iab">
                                 <rect key="frame" x="12" y="562" width="39" height="30"/>
                                 <state key="normal" title="Reset"/>
+                                <variation key="widthClass=compact">
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                </variation>
                                 <connections>
                                     <action selector="resetButton:" destination="T0X-G3-yD5" eventType="touchUpInside" id="3pv-af-9oP"/>
                                 </connections>
@@ -155,6 +161,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0fG-Jq-qSW">
                                 <rect key="frame" x="478" y="562" width="110" height="30"/>
                                 <state key="normal" title="One Click Finish"/>
+                                <variation key="widthClass=compact">
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                </variation>
                                 <connections>
                                     <action selector="fastButton:" destination="T0X-G3-yD5" eventType="touchUpInside" id="2B7-yE-Sy8"/>
                                 </connections>
