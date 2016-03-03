@@ -16,6 +16,8 @@
 		AE4446681C8512C0009225BC /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4446671C8512C0009225BC /* constants.swift */; };
 		AE44466A1C87781F009225BC /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE4446691C87781F009225BC /* SpriteKit.framework */; };
 		AE44466E1C877898009225BC /* CreativeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE44466D1C877898009225BC /* CreativeViewController.swift */; };
+		AE4446701C877BB1009225BC /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE44466F1C877BB1009225BC /* Games.swift */; };
+		AE4446741C878FF4009225BC /* box.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4446731C878FF4009225BC /* box.png */; };
 		AE5011141C83A29600AE7AB5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5011131C83A29600AE7AB5 /* ResultViewController.swift */; };
 		AEB7EB261C83B7F0000F465E /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB7EB251C83B7F0000F465E /* ResultTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +34,8 @@
 		AE4446671C8512C0009225BC /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		AE4446691C87781F009225BC /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		AE44466D1C877898009225BC /* CreativeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreativeViewController.swift; sourceTree = "<group>"; };
+		AE44466F1C877BB1009225BC /* Games.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
+		AE4446731C878FF4009225BC /* box.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = box.png; sourceTree = "<group>"; };
 		AE5011131C83A29600AE7AB5 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 		AEB7EB251C83B7F0000F465E /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -101,6 +105,7 @@
 		AE0C0E801C80DBA000F3EE0B /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				AE4446731C878FF4009225BC /* box.png */,
 				AE0C0E6A1C80D3EE00F3EE0B /* AppDelegate.swift */,
 			);
 			name = Other;
@@ -110,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				AE0C0E821C80ED8300F3EE0B /* Primes.swift */,
+				AE44466F1C877BB1009225BC /* Games.swift */,
 				AE4446671C8512C0009225BC /* constants.swift */,
 			);
 			name = Model;
@@ -176,6 +182,7 @@
 				AE0C0E751C80D3EE00F3EE0B /* LaunchScreen.storyboard in Resources */,
 				AE0C0E721C80D3EE00F3EE0B /* Assets.xcassets in Resources */,
 				AE0C0E701C80D3EE00F3EE0B /* Main.storyboard in Resources */,
+				AE4446741C878FF4009225BC /* box.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +196,7 @@
 				AE0C0E7D1C80DB6300F3EE0B /* MainViewController.swift in Sources */,
 				AE0C0E831C80ED8300F3EE0B /* Primes.swift in Sources */,
 				AE0C0E6B1C80D3EE00F3EE0B /* AppDelegate.swift in Sources */,
+				AE4446701C877BB1009225BC /* Games.swift in Sources */,
 				AEB7EB261C83B7F0000F465E /* ResultTableViewCell.swift in Sources */,
 				AE44466E1C877898009225BC /* CreativeViewController.swift in Sources */,
 				AE5011141C83A29600AE7AB5 /* ResultViewController.swift in Sources */,

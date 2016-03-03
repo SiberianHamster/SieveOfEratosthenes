@@ -91,21 +91,16 @@ class MainViewController: UIViewController {
       
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       let vc1 = storyboard.instantiateViewControllerWithIdentifier("ResultVC") as! ResultViewController
+      let vc2 = storyboard.instantiateViewControllerWithIdentifier("CreativeVC") as! CreativeViewController
+      
       let userMax = NSInteger(Int(self.textField.text!)!)
       vc1.usersMax = userMax
-
-
-      let arrayofVC = [vc1]
+      
+      let arrayofVC = [vc1,vc2]
       
       let destination = segue.destinationViewController as! UITabBarController
       destination.viewControllers = arrayofVC
 
-      
-
-////     let destinationVC = segue.destinationViewController as! ResultViewController
-//      let userMax = NSInteger(Int(self.textField.text!)!)
-////      print("Object Count: \(textField.text)")
-//      destinationVC.usersMax = userMax
 
     }
   }
