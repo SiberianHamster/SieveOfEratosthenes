@@ -42,12 +42,6 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
       }
     }
     
-
-
-    
-
-
-    
   }
   
   @IBOutlet weak var titleLabel: UILabel!
@@ -86,6 +80,9 @@ class ResultViewController: UIViewController, UITableViewDataSource, UITableView
       }
 
         self.objectToPrimeify = Primes.init(userUpperLimit: usersMax, userCollection: userCollection)
+      let creativeVC = self.tabBarController?.viewControllers![1] as! CreativeViewController
+      creativeVC.usersMax = self.usersMax
+      creativeVC.objectToPrimeify = self.objectToPrimeify
       self.tableView.delegate = self
       self.tableView.dataSource = self
         // Do any additional setup after loading the view.

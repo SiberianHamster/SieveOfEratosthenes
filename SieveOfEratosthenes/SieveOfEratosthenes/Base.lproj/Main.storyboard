@@ -48,7 +48,7 @@
                                 <state key="normal" title="Enter a Number"/>
                                 <connections>
                                     <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PbR-XM-fQk"/>
-                                    <segue destination="T0X-G3-yD5" kind="presentation" identifier="showResultsSegue" id="oIS-uU-r3D"/>
+                                    <segue destination="S0j-tZ-GhZ" kind="show" identifier="showTabBar" id="nu7-a8-RMI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -81,8 +81,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-608" y="-45"/>
         </scene>
-        <!--Result View Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="abz-ML-thT">
+            <objects>
+                <tabBarController id="S0j-tZ-GhZ" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="xD1-z5-Zot">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j07-Hx-CY9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="194" y="-45"/>
+        </scene>
+        <!--Item-->
         <scene sceneID="BUD-mH-VKx">
             <objects>
                 <viewController storyboardIdentifier="ResultVC" id="T0X-G3-yD5" customClass="ResultViewController" customModule="SieveOfEratosthenes" customModuleProvider="target" sceneMemberID="viewController">
@@ -190,6 +205,7 @@
                             <constraint firstItem="y1y-ju-ssb" firstAttribute="centerX" secondItem="M9v-ZF-5wD" secondAttribute="centerX" id="hol-om-yqo"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="tzq-RL-k8H"/>
                     <connections>
                         <outlet property="activityIndicator" destination="d9Y-m1-VT5" id="L7u-p5-b39"/>
                         <outlet property="detectPrimeOutlet" destination="Muo-4x-1is" id="cbx-sm-332"/>
@@ -201,7 +217,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gqm-nP-AgD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="185"/>
+            <point key="canvasLocation" x="896" y="-57"/>
+        </scene>
+        <!--Creative View Controller-->
+        <scene sceneID="Nio-Io-nTV">
+            <objects>
+                <viewController storyboardIdentifier="CreativeVC" id="1nw-Mi-UN9" customClass="CreativeViewController" customModule="SieveOfEratosthenes" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fn2-ZK-iiN"/>
+                        <viewControllerLayoutGuide type="bottom" id="AVI-wh-HTV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uOY-Ib-cRC" customClass="SKView">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iKJ-Bl-CX3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="896" y="652"/>
         </scene>
     </scenes>
 </document>
