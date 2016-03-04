@@ -19,6 +19,9 @@ class Games: SKScene, SKPhysicsContactDelegate {
   var sieve:SKSpriteNode = SKSpriteNode()
   var tempArray = [Bool]()
   var nodeRetainCount:Int = 0
+  var labelBox = SKLabelNode()
+  var xLabel:Int=Int()
+  var rotateWarning = SKSpriteNode()
   
   struct physicsIdentification {
     static let noneItem:UInt32 = 0
@@ -48,17 +51,22 @@ class Games: SKScene, SKPhysicsContactDelegate {
     addChild(bucketBottom)
     addChild(sieve)
     physicsWorld.contactDelegate = self
-    
+    self.rotateWarning = addRotateWarning(CGPoint.init(x: size.width*0.5, y: size.height*0.5))
+    addChild(rotateWarning)
+    rotateWarning.zPosition = 200
+    rotateWarning.alpha = 0.5
     addNotification()
   }
   
   //Here is the "start" after setup in didMoveToView.
   func deviceRotating(){
+    self.rotateWarning.hidden = true
     let rotate90degree:SKAction = SKAction.rotateToAngle(CGFloat(M_PI/2.0) , duration: 0.2)
     self.bucketTop.runAction(rotate90degree)
     nodeRetainCount = 0
     
     var x = 0
+    xLabel = x
     repeat {
       if (self.objectToPrimeify.primeCollection[x]==true){
 //        if((x+self.objectToPrimeify.adjustIndexForFirstPrime) == self.objectToPrimeify.currentSmallestPrime){
@@ -81,6 +89,7 @@ class Games: SKScene, SKPhysicsContactDelegate {
       }
       
       x++
+      xLabel = x
     } while x < objectToPrimeify.primeCollection.count
     removeNotification()
   }
@@ -105,7 +114,7 @@ class Games: SKScene, SKPhysicsContactDelegate {
   
   func addNumberCardTrue() {
     let numberCardTrue = SKSpriteNode(imageNamed: "box")
-    numberCardTrue.size = CGSizeMake (10.0, 10.0)
+    numberCardTrue.size = CGSizeMake (20.0, 20.0)
     numberCardTrue.position = CGPoint(x:size.width * 0.5 , y: size.height * 0.9)
     addChild(numberCardTrue)
     let speed = random(min: 3, max: 5)
@@ -120,7 +129,7 @@ class Games: SKScene, SKPhysicsContactDelegate {
   
   func addNumberCardFalse() {
     let numberCardFalse = SKSpriteNode(imageNamed: "box")
-    numberCardFalse.size = CGSizeMake (10.0, 10.0)
+    numberCardFalse.size = CGSizeMake (20.0, 20.0)
     numberCardFalse.position = CGPoint(x:size.width * 0.5 , y: size.height * 0.9)
     addChild(numberCardFalse)
     let speed = random(min: 0.5, max: 2)
@@ -153,6 +162,19 @@ class Games: SKScene, SKPhysicsContactDelegate {
     return bucket
   }
   
+  func addSpawnLabelBox(textToDisplay:String)->SKLabelNode{
+    let labelBox = SKLabelNode(text: "\(textToDisplay)")
+    return labelBox
+  }
+  
+  func addRotateWarning(position:CGPoint)->SKSpriteNode{
+    let rotateWarning = SKSpriteNode(imageNamed: "rotate")
+    rotateWarning.size = CGSizeMake(size.width * 0.5, size.height * 0.5)
+    rotateWarning.position = CGPoint(x: position.x, y: position.y)
+    return rotateWarning
+  }
+  
+  
   
   func addSieve(position:CGPoint)->SKSpriteNode{
     let sieve = SKSpriteNode(imageNamed: "sieve")
@@ -165,6 +187,7 @@ class Games: SKScene, SKPhysicsContactDelegate {
     
     return sieve
   }
+  
   
   func numberCardRemoveCard(numberCard:SKSpriteNode){
     numberCard.removeFromParent()
@@ -237,9 +260,10 @@ class Games: SKScene, SKPhysicsContactDelegate {
         self.objectToPrimeify.primeCollection = self.objectToPrimeify.runPrimeSweep(self.objectToPrimeify.primeCollection, currentSmallestActualNumber: self.objectToPrimeify.currentSmallestPrime)
         //mark current prime as false so that we drop a card that will get filtered out
         self.objectToPrimeify.primeCollection[self.objectToPrimeify.currentSmallestPrime-self.objectToPrimeify.adjustIndexForFirstPrime]=false
+        self.rotateWarning.hidden = false
+
       })
     }
-    
   }
   
 }
