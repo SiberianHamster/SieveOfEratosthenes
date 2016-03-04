@@ -91,7 +91,10 @@ class MainViewController: UIViewController {
       
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       let vc1 = storyboard.instantiateViewControllerWithIdentifier("ResultVC") as! ResultViewController
+      vc1.tabBarItem.title = "Standard/Businesslike"
       let vc2 = storyboard.instantiateViewControllerWithIdentifier("CreativeVC") as! CreativeViewController
+      vc2.tabBarItem.title = "More Creative"
+
       
       let userMax = NSInteger(Int(self.textField.text!)!)
       vc1.usersMax = userMax
@@ -100,6 +103,8 @@ class MainViewController: UIViewController {
       
       let destination = segue.destinationViewController as! UITabBarController
       destination.viewControllers = arrayofVC
+      destination.tabBar.barTintColor = UIColor.blackColor()
+      destination.tabBar.tintColor = UIColor.lightGrayColor()
 
 
     }

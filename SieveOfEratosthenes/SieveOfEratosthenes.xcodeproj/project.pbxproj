@@ -21,6 +21,7 @@
 		AE4446771C88A9D5009225BC /* bucket.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4446751C88A9D5009225BC /* bucket.png */; };
 		AE4446781C88A9D5009225BC /* sieve.png in Resources */ = {isa = PBXBuildFile; fileRef = AE4446761C88A9D5009225BC /* sieve.png */; };
 		AE5011141C83A29600AE7AB5 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5011131C83A29600AE7AB5 /* ResultViewController.swift */; };
+		AE60FBD71C89561F005CB378 /* wait.png in Resources */ = {isa = PBXBuildFile; fileRef = AE60FBD61C89561F005CB378 /* wait.png */; };
 		AEB7EB261C83B7F0000F465E /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB7EB251C83B7F0000F465E /* ResultTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		AE4446751C88A9D5009225BC /* bucket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bucket.png; sourceTree = "<group>"; };
 		AE4446761C88A9D5009225BC /* sieve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sieve.png; sourceTree = "<group>"; };
 		AE5011131C83A29600AE7AB5 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		AE60FBD61C89561F005CB378 /* wait.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wait.png; sourceTree = "<group>"; };
 		AEB7EB251C83B7F0000F465E /* ResultTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 			children = (
 				AE4446731C878FF4009225BC /* box.png */,
 				AE4446751C88A9D5009225BC /* bucket.png */,
+				AE60FBD61C89561F005CB378 /* wait.png */,
 				AE4446761C88A9D5009225BC /* sieve.png */,
 				AE0C0E6A1C80D3EE00F3EE0B /* AppDelegate.swift */,
 			);
@@ -191,6 +194,7 @@
 				AE4446781C88A9D5009225BC /* sieve.png in Resources */,
 				AE0C0E701C80D3EE00F3EE0B /* Main.storyboard in Resources */,
 				AE4446741C878FF4009225BC /* box.png in Resources */,
+				AE60FBD71C89561F005CB378 /* wait.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
