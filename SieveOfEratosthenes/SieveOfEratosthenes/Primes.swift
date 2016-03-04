@@ -38,6 +38,7 @@ class Primes: NSObject {
     return collectionOfNumbers
   }
   
+  
   func getNewSmallestPrime(){
     self.lastSmallestPrime = self.currentSmallestPrime
 

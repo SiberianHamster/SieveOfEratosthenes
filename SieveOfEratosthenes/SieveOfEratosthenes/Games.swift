@@ -30,10 +30,17 @@ class Games: SKScene, SKPhysicsContactDelegate {
   }
   
   override func didMoveToView(view: SKView) {
-    tempArray = objectToPrimeify.primeCollection
+    self.tempArray = self.objectToPrimeify.primeCollection
+    
+    
+    self.objectToPrimeify.primeCollection = self.objectToPrimeify.runPrimeSweep(self.objectToPrimeify.primeCollection, currentSmallestActualNumber: self.objectToPrimeify.currentSmallestPrime)
+    //mark current prime as false so that we drop a card that will get filtered out
+    self.objectToPrimeify.primeCollection[self.objectToPrimeify.currentSmallestPrime-self.objectToPrimeify.adjustIndexForFirstPrime]=false
+    
+    
     backgroundColor = SKColor.whiteColor()
     physicsWorld.gravity = CGVectorMake(0, 0)
-    addNotification()
+
     self.bucketTop = addSpawnBucket(CGPoint.init(x: size.width*0.5, y: size.height*0.9))
     self.bucketBottom = addBucket(CGPoint.init(x: size.width*0.5, y: size.height*0.1))
     self.sieve = addSieve(CGPoint.init(x: size.width*0.5, y: size.height*0.5))
@@ -42,37 +49,45 @@ class Games: SKScene, SKPhysicsContactDelegate {
     addChild(sieve)
     physicsWorld.contactDelegate = self
     
+    addNotification()
   }
   
+  //Here is the "start" after setup in didMoveToView.
   func deviceRotating(){
     let rotate90degree:SKAction = SKAction.rotateToAngle(CGFloat(M_PI/2.0) , duration: 0.2)
     self.bucketTop.runAction(rotate90degree)
     nodeRetainCount = 0
+    
     var x = 0
     repeat {
-      if (objectToPrimeify.primeCollection[x]==true){
-        runAction(SKAction.runBlock(addNumberCardTrue))
-        nodeRetainCount++
-    } else if
+      if (self.objectToPrimeify.primeCollection[x]==true){
+//        if((x+self.objectToPrimeify.adjustIndexForFirstPrime) == self.objectToPrimeify.currentSmallestPrime){
+//        runAction(SKAction.runBlock(addNumberCardFalse))
+//      nodeRetainCount++
+//    }else if
+//          ((x+self.objectToPrimeify.adjustIndexForFirstPrime) > self.objectToPrimeify.currentSmallestPrime){
+          runAction(SKAction.runBlock(addNumberCardTrue))
+          nodeRetainCount++
+
+//        }
+    
+      } else if
         (objectToPrimeify.primeCollection[x]==false){
           if (tempArray[x]==true){
-    runAction(SKAction.runBlock(addNumberCardFalse))
+            runAction(SKAction.runBlock(addNumberCardFalse))
             nodeRetainCount++
-  
-    }
-    }
+            
+          }
+      }
       
       x++
     } while x < objectToPrimeify.primeCollection.count
     removeNotification()
-    
-    objectToPrimeify.runPrimeSweep(objectToPrimeify.primeCollection, currentSmallestActualNumber: objectToPrimeify.currentSmallestPrime)
-    
-    
   }
   
+  
   func removeNotification(){
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: nil, object: nil)
+    NSNotificationCenter.defaultCenter().removeObserver(self, name: nil, object: nil)
   }
   
   func addNotification(){
@@ -128,7 +143,7 @@ class Games: SKScene, SKPhysicsContactDelegate {
     bucket.physicsBody?.contactTestBitMask = physicsIdentification.numberCardTrueItem
     bucket.physicsBody?.collisionBitMask = physicsIdentification.noneItem
     
-return bucket
+    return bucket
   }
   
   func addSpawnBucket(position:CGPoint)->SKSpriteNode{
@@ -137,7 +152,6 @@ return bucket
     bucket.position = CGPoint(x: position.x, y: position.y)
     return bucket
   }
-
   
   
   func addSieve(position:CGPoint)->SKSpriteNode{
@@ -149,9 +163,9 @@ return bucket
     sieve.physicsBody?.contactTestBitMask = physicsIdentification.numberCardFalseItem
     sieve.physicsBody?.collisionBitMask = physicsIdentification.noneItem
     
-return sieve
+    return sieve
   }
-
+  
   func numberCardRemoveCard(numberCard:SKSpriteNode){
     numberCard.removeFromParent()
     nodeRetainCount--
@@ -170,8 +184,8 @@ return sieve
       firstBody = contact.bodyA
       secondBody = contact.bodyB
     }
-//    print("firstBody.categoryBitMask:\(firstBody.categoryBitMask)")
-//    print("secondBody.categoryBitMask:\(secondBody.categoryBitMask)")
+    //    print("firstBody.categoryBitMask:\(firstBody.categoryBitMask)")
+    //    print("secondBody.categoryBitMask:\(secondBody.categoryBitMask)")
     
     if (firstBody.categoryBitMask==1 && secondBody.categoryBitMask==4){
       numberCardRemoveCard(firstBody.node as! SKSpriteNode)
@@ -183,7 +197,7 @@ return sieve
     
     
   }
-
+  
   func resetTheWorld(){
     let rotateBackToZeroDegree:SKAction = SKAction.rotateToAngle(CGFloat(0 * M_PI) , duration: 0.2)
     
@@ -197,7 +211,7 @@ return sieve
     
     let moveToBottom:SKAction = SKAction.moveToY(size.height * 0.5, duration: 1)
     let moveBackToTop:SKAction = SKAction.moveToY(bucketTopPosition.y, duration: 1)
-
+    
     let moveAway:SKAction = SKAction.moveToX(size.width*2.0, duration: 1)
     let moveBack:SKAction = SKAction.moveToX(size.width*0.5, duration: 1)
     
@@ -206,19 +220,23 @@ return sieve
     self.bucketTop.runAction(moveToBottom, completion: { () -> Void in
       self.bucketTop.runAction(moveBackToTop)
     })
-
+    
     self.bucketBottom.runAction(moveToTop, completion:{() -> Void in
       self.bucketBottom.zPosition = -100
       self.bucketBottom.runAction(moveBackToBottom, completion: { () -> Void in
         self.bucketBottom.zPosition = bucketBottomZPosition
       })
-      })
+    })
     
-
+    
     self.sieve.runAction(moveAway) { () -> Void in
       self.sieve.runAction(moveBack, completion: { () -> Void in
         self.addNotification()
+        self.objectToPrimeify.getNewSmallestPrime()
         self.tempArray = self.objectToPrimeify.primeCollection
+        self.objectToPrimeify.primeCollection = self.objectToPrimeify.runPrimeSweep(self.objectToPrimeify.primeCollection, currentSmallestActualNumber: self.objectToPrimeify.currentSmallestPrime)
+        //mark current prime as false so that we drop a card that will get filtered out
+        self.objectToPrimeify.primeCollection[self.objectToPrimeify.currentSmallestPrime-self.objectToPrimeify.adjustIndexForFirstPrime]=false
       })
     }
     

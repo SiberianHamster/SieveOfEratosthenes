@@ -46,6 +46,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJK-3Y-sRW">
                                 <rect key="frame" x="246" y="285" width="108" height="30"/>
                                 <state key="normal" title="Enter a Number"/>
+                                <variation key="widthClass=compact">
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                </variation>
                                 <connections>
                                     <action selector="startButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PbR-XM-fQk"/>
                                     <segue destination="S0j-tZ-GhZ" kind="show" identifier="showTabBar" id="nu7-a8-RMI"/>
