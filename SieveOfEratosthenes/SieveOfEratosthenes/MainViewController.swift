@@ -16,7 +16,6 @@ class MainViewController: UIViewController {
   
   @IBOutlet weak var textField: UITextField!
   
-  //Achtung need a regex here to prevent pasting
   @IBAction func startButton(sender: UIButton) {
 
   }
@@ -44,12 +43,6 @@ class MainViewController: UIViewController {
       self.startButtonOutlet.setTitleColor(constants.kThemeComplimentary2Color, forState: UIControlState.Normal)
       
         // Do any additional setup after loading the view.
-      
-//      let grLayer = CAGradientLayer.init()
-//      grLayer.frame = cell.layer.frame
-//      let colors = [UIColor.blackColor() as AnyObject?, UIColor.greenColor() as AnyObject?]
-//      grLayer.colors = colors
-//      cell.layer.insertSublayer(grLayer, atIndex: 0)
     }
   
   override func viewWillAppear(animated: Bool) {
@@ -73,7 +66,7 @@ class MainViewController: UIViewController {
         self.startButtonOutlet.setTitle("Lets Do It!", forState: UIControlState.Normal)
         isValid = true
         if(Int(text)>constants.someLargeNumberToWarnUser){
-        self.startButtonOutlet.setTitle("Redonkulous! You can but there will be a wait time", forState: UIControlState.Normal)
+        self.startButtonOutlet.setTitle("Redonkulous! There will be wait times", forState: UIControlState.Normal)
         }
       }else{
       self.startButtonOutlet.setTitle("Please enter a number larger than 1", forState: UIControlState.Normal)
