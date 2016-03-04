@@ -13,13 +13,14 @@ class CreativeViewController: UIViewController {
   
   var usersMax:NSInteger = NSInteger()
   var objectToPrimeify:Primes = Primes()
+  var gameView:Games=Games()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
       
       resetArray()
-      let gameView = Games(size: view.bounds.size)
+      gameView = Games(size: view.bounds.size)
       gameView.objectToPrimeify = self.objectToPrimeify
       let skView = view as! SKView
       gameView.scaleMode = .ResizeFill
@@ -28,15 +29,21 @@ class CreativeViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
   
-  //function is to quickly detect and reset Array if the array has been touched at all by looking at the first possible composite which is 4 or index position 2 of array.
+
   func resetArray(){
-    if self.objectToPrimeify.primeCollection[2] == false{
       var x = 0
       repeat{
         self.objectToPrimeify.primeCollection[x]=true
         x++}
         while x < self.objectToPrimeify.primeCollection.count
-    }
+  }
+  
+  override func viewWillAppear(animated: Bool) {
+    gameView.addNotification()
+  }
+  
+  override func viewWillDisappear(animated: Bool) {
+    gameView.removeNotification()
   }
 
     override func didReceiveMemoryWarning() {
